@@ -1,0 +1,15 @@
+.logo {
+  width: 140px;
+  height: 140px;
+}
+
+.logo_col {
+  display: flex;
+  justify-content: center;
+}
+
+.bucket_logo {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 23px;
+}
