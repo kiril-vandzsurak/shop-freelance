@@ -13,3 +13,11 @@
   height: 50px;
   margin-bottom: 23px;
 }
+
+.menuHover:hover .dropdown-menu {
+  display: block;
+}
+
+.customNavDropdown .dropdown-toggle::after {
+  display: none;
+}
