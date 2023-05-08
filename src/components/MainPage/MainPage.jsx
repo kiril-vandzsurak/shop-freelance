@@ -1,10 +1,12 @@
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "./MainPage.module.css";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import ProductList from "../ProductList/ProductList";
 import { useState } from "react";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import ProductCard from "../ProductCard/ProductCard";
+import { Link } from "react-router-dom";
 
 const MainPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -18,6 +20,14 @@ const MainPage = () => {
   const handleWomenDropdownToggle = () => {
     setIsWomenDropdownOpen(!isWomenDropdownOpen);
   };
+
+  const menCategory = useSelector(
+    (state) => state.categoriesProduct.menCategory
+  );
+  const womenCategory = useSelector(
+    (state) => state.categoriesProduct.womenCategory
+  );
+
   return (
     <div>
       <Container fluid>
@@ -65,7 +75,20 @@ const MainPage = () => {
                 onMouseLeave={handleMenDropdownToggle}
                 className={styles.customNavDropdown}
               >
-                <span>fuck no babe</span>
+                {menCategory.map((product) => (
+                  <Link
+                    to={`/products/${product.id}`}
+                    key={product.id}
+                    style={{ textDecoration: "none" }}
+                    state={{ product }}
+                  >
+                    <ProductCard
+                      key={product.id}
+                      name={product.name}
+                      img={product.img}
+                    />
+                  </Link>
+                ))}
               </NavDropdown>
               <NavDropdown
                 title="Women"
@@ -75,7 +98,20 @@ const MainPage = () => {
                 onMouseLeave={handleWomenDropdownToggle}
                 className={styles.customNavDropdown}
               >
-                <span>fuck no babe</span>
+                {womenCategory.map((product) => (
+                  <Link
+                    to={`/products/${product.id}`}
+                    key={product.id}
+                    style={{ textDecoration: "none" }}
+                    state={{ product }}
+                  >
+                    <ProductCard
+                      key={product.id}
+                      name={product.name}
+                      img={product.img}
+                    />
+                  </Link>
+                ))}
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
