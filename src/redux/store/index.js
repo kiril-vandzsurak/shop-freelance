@@ -6,7 +6,8 @@ import {
 import localStorage from "redux-persist/es/storage";
 import { persistReducer, persistStore } from "redux-persist";
 import { encryptTransform } from "redux-persist-transform-encrypt";
-import categoriesProduct from "../reducers/categoriesProduct";
+import categoriesProduct from "../reducers/categoriesProduct.js";
+import cartReducer from "../reducers/cartReducer.js";
 
 const persistConfig = {
   key: "root",
@@ -20,6 +21,7 @@ const persistConfig = {
 
 const bigReducer = combineReducers({
   categoriesProduct: categoriesProduct,
+  cart: cartReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, bigReducer);

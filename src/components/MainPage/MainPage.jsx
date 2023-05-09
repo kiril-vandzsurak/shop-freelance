@@ -54,11 +54,13 @@ const MainPage = () => {
             </div>
           </Col>
           <Col className="d-flex justify-content-center align-items-center">
-            <img
-              className={styles.bucket_logo}
-              src={window.location.origin + "/cart.png"}
-              alt="img"
-            />
+            <Link to={`/cart`}>
+              <img
+                className={styles.bucket_logo}
+                src={window.location.origin + "/cart.png"}
+                alt="img"
+              />
+            </Link>
           </Col>
         </Row>
       </Container>

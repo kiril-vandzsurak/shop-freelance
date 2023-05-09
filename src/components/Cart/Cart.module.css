@@ -1,0 +1,6 @@
+.itemsBlock {
+  width: 90%;
+  min-height: 100px;
+  background-color: lightgray;
+  margin-inline: auto;
+}
