@@ -10,6 +10,9 @@ const ProductList = ({ searchQuery }) => {
     { id: 1, name: "Product 1", img: "/logo-shop.png", category: "men" },
     { id: 2, name: "Product 2", img: "/logo-shop.png", category: "women" },
     { id: 3, name: "Product 3", img: "/logo-shop.png", category: "men" },
+    { id: 1, name: "Product 1", img: "/logo-shop.png", category: "men" },
+    { id: 2, name: "Product 2", img: "/logo-shop.png", category: "women" },
+    { id: 3, name: "Product 3", img: "/logo-shop.png", category: "men" },
   ];
 
   const dispatch = useDispatch();
@@ -30,28 +33,50 @@ const ProductList = ({ searchQuery }) => {
     dispatch(uploadCategoryData(filteredProductsMen, filteredProductsWomen));
   }, []);
 
+  const chunkArray = (array, chunkSize) => {
+    const chunks = [];
+    for (let i = 0; i < array.length; i += chunkSize) {
+      chunks.push(array.slice(i, i + chunkSize));
+    }
+    return chunks;
+  };
+
+  const productChunks = chunkArray(filteredProducts, 3);
+
   return (
     <div>
       <h1>Product List</h1>
       {filteredProducts.length > 0 ? (
-        <div className="d-flex">
-          {filteredProducts.map((product) => (
-            <Link
-              to={`/products/${product.id}`}
-              key={product.id}
-              style={{ textDecoration: "none" }}
-              state={{ product }}
+        <div>
+          {productChunks.map((chunk, index) => (
+            <div
+              key={index}
+              className="d-flex justify-content-around"
+              style={{
+                width: "90%",
+                marginInline: "auto",
+                marginBottom: "20px",
+              }}
             >
-              <ProductCard
-                key={product.id}
-                name={product.name}
-                img={product.img}
-              />
-            </Link>
+              {chunk.map((product) => (
+                <Link
+                  to={`/products/${product.id}`}
+                  key={product.id}
+                  style={{ textDecoration: "none" }}
+                  state={{ product }}
+                >
+                  <ProductCard
+                    key={product.id}
+                    name={product.name}
+                    img={product.img}
+                  />
+                </Link>
+              ))}
+            </div>
           ))}
         </div>
       ) : (
-        <p>No products found</p>
+        <p>Product wasn't found</p>
       )}
     </div>
   );

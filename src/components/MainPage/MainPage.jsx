@@ -41,7 +41,7 @@ const MainPage = () => {
           </Col>
           <Col className="d-flex justify-content-center align-items-center">
             <div>
-              <Form>
+              <Form style={{ width: "430px" }}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Control
                     type="email"
@@ -65,7 +65,7 @@ const MainPage = () => {
         </Row>
       </Container>
       <div className={styles.navbar}>
-        <Navbar bg="light" expand="lg">
+        <Navbar expand="lg" className={styles.navbarColor}>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto" style={{ marginInline: "auto" }}>
@@ -75,7 +75,7 @@ const MainPage = () => {
                 show={isMenDropdownOpen}
                 onMouseEnter={handleMenDropdownToggle}
                 onMouseLeave={handleMenDropdownToggle}
-                className={styles.customNavDropdown}
+                className={`${styles.customNavDropdown} ${styles.navbarFont}`}
               >
                 {menCategory.map((product) => (
                   <Link
@@ -98,7 +98,7 @@ const MainPage = () => {
                 show={isWomenDropdownOpen}
                 onMouseEnter={handleWomenDropdownToggle}
                 onMouseLeave={handleWomenDropdownToggle}
-                className={styles.customNavDropdown}
+                className={`${styles.customNavDropdown} ${styles.navbarFont}`}
               >
                 {womenCategory.map((product) => (
                   <Link

@@ -1,6 +1,7 @@
 .logo {
-  width: 140px;
-  height: 140px;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 25px;
 }
 
 .logo_col {
@@ -18,6 +19,11 @@
   display: block;
 }
 
-.customNavDropdown .dropdown-toggle::after {
-  display: none;
+.navbarColor {
+  background-color: #cd567d !important;
+}
+
+.navbarFont {
+  font-size: 30px;
+  color: white !important;
 }
